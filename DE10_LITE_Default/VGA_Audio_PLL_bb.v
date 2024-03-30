@@ -32,20 +32,24 @@
 //authorized distributors.  Please refer to the applicable 
 //agreement for further details.
 
-module VGA_Audio_PLL
-    (
-        input areset,
-        input inclk0,
-        output c0,
-        output c1,
-        output c2,
-        output locked
-    );
+module VGA_Audio_PLL (
+	areset,
+	inclk0,
+	c0,
+	c1,
+	c2,
+	locked);
 
+	input	  areset;
+	input	  inclk0;
+	output	  c0;
+	output	  c1;
+	output	  c2;
+	output	  locked;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
-    tri0 areset;
+	tri0	  areset;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_on
 `endif

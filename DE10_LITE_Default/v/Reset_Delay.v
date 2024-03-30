@@ -1,10 +1,6 @@
-module Reset_Delay
-    (
-        input iCLK,
-        output oRESET
-    );
-
-    reg oRESET;
+module Reset_Delay(iCLK, oRESET);
+    input iCLK;
+    output reg oRESET;
     reg[19:0] Cont;
 
     always @(posedge iCLK)
@@ -18,4 +14,4 @@ module Reset_Delay
                 oRESET <= 1'b1;
         end
 
-endmodule // Reset_Delay
+endmodule

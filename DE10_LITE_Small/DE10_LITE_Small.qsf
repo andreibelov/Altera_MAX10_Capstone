@@ -5,13 +5,13 @@
 set_global_assignment -name FAMILY "MAX 10 FPGA"
 set_global_assignment -name DEVICE 10M50DAF484C7G
 set_global_assignment -name TOP_LEVEL_ENTITY "DE10_LITE_Small"
-set_global_assignment -name ORIGINAL_QUARTUS_VERSION "16.0.0"
-set_global_assignment -name LAST_QUARTUS_VERSION "16.0.0"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "22:33:51 MARCH 29,2024"
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:45:13 MARCH 30,2024"
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 7
-set_global_assignment -name SDC_FILE DE10_LITE_Small.SDC
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 
 #============================================================
 # CLOCK
@@ -126,8 +126,8 @@ set_location_assignment PIN_L19 -to HEX5[7]
 #============================================================
 # KEY
 #============================================================
-set_instance_assignment -name IO_STANDARD "3.3 V Schmitt Trigger" -to KEY[0]
-set_instance_assignment -name IO_STANDARD "3.3 V Schmitt Trigger" -to KEY[1]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to KEY[0]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to KEY[1]
 set_location_assignment PIN_B8 -to KEY[0]
 set_location_assignment PIN_A7 -to KEY[1]
 
@@ -144,6 +144,18 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[8]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[9]
+
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDR[9]
+
 set_location_assignment PIN_A8 -to LEDR[0]
 set_location_assignment PIN_A9 -to LEDR[1]
 set_location_assignment PIN_A10 -to LEDR[2]
@@ -164,6 +176,8 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_INT[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SCLK
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SDI
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SDO
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to GSENSOR_SCLK
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to GSENSOR_SDI
 set_location_assignment PIN_AB16 -to GSENSOR_CS_N
 set_location_assignment PIN_Y14 -to GSENSOR_INT[1]
 set_location_assignment PIN_Y13 -to GSENSOR_INT[2]
@@ -175,3 +189,33 @@ set_location_assignment PIN_V12 -to GSENSOR_SDO
 # End of pin assignments by Terasic System Builder
 #============================================================
 
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_global_assignment -name SRAM_OBJECT_FILE DE10_LITE_Small.sof
+set_global_assignment -name VERILOG_FILE DE10_LITE_Small.v
+set_global_assignment -name SOURCE_FILE v/spi_param.h
+set_global_assignment -name VERILOG_FILE v/spi_ee_config.v
+set_global_assignment -name VERILOG_FILE v/spi_controller.v
+set_global_assignment -name VERILOG_FILE v/SEG7_LUT_6.v
+set_global_assignment -name VERILOG_FILE v/SEG7_LUT.v
+set_global_assignment -name VERILOG_FILE v/Reset_Delay.v
+set_global_assignment -name VERILOG_FILE v/led_driver.v
+set_global_assignment -name SDC_FILE DE10_LITE_Small.sdc
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

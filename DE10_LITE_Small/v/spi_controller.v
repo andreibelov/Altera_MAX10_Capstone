@@ -1,34 +1,43 @@
-module spi_controller
-    (
+module spi_controller(
+    iRSTN,
+    iSPI_CLK,
+    iSPI_CLK_OUT,
+    iP2S_DATA,
+    iSPI_GO,
+    oSPI_END,
+    oS2P_DATA,
+    SPI_SDIO,
+    oSPI_CSN,
+    oSPI_CLK);
+
+    `include "spi_param.h"
+
 //=======================================================
 //  PORT declarations
 //=======================================================
 //	Host Side
-        input iRSTN,
-        input iSPI_CLK,
-        input iSPI_CLK_OUT,
-        input[SI_DataL:0] iP2S_DATA,
-        input iSPI_GO,
-        output oSPI_END,
-        output reg[SO_DataL:0] oS2P_DATA,
-//	SPI Side
-        inout SPI_SDIO,
-        output oSPI_CSN,
-        output oSPI_CLK
-    );
+    input iRSTN;
+    input iSPI_CLK;
+    input iSPI_CLK_OUT;
+    input[SI_DataL:0] iP2S_DATA;
+    input iSPI_GO;
+    output oSPI_END;
+    output reg[SO_DataL:0] oS2P_DATA;
+//	SPI Side              
+    inout SPI_SDIO;
+    output oSPI_CSN;
+    output oSPI_CLK;
 
-`include "spi_param.h"
-
-    //=======================================================
-    //  REG/WIRE declarations
-    //=======================================================
+//=======================================================
+//  REG/WIRE declarations
+//=======================================================
     wire read_mode, write_address;
     reg spi_count_en;
     reg[3:0] spi_count;
 
-    //=======================================================
-    //  Structural coding
-    //=======================================================
+//=======================================================
+//  Structural coding
+//=======================================================
     assign read_mode = iP2S_DATA[SI_DataL];
     assign write_address = spi_count[3];
     assign oSPI_END = ~| spi_count;
@@ -57,4 +66,5 @@ module spi_controller
                 if (read_mode && !write_address)
                     oS2P_DATA <= {oS2P_DATA[SO_DataL-1:0], SPI_SDIO};
             end
-endmodule // spi_controller
+
+endmodule

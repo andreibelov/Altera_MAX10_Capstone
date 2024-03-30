@@ -35,13 +35,13 @@ module led_driver(iRSTN, iCLK, iDIG, iG_INT2, oLED);
 
     assign oLED = int2_count[23] ? ((abs_select_high[3:0] == 3'h0) ? 10'h030:
         (abs_select_high[3:0] == 3'h1) ? (signed_bit ? 10'h020 : 10'h010):
-            (abs_select_high[3:0] == 3'h2) ? (signed_bit ? 10'h060 : 10'h018):
-                (abs_select_high[3:0] == 3'h3) ? (signed_bit ? 10'h040 : 10'h8):
-                    (abs_select_high[3:0] == 3'h4) ? (signed_bit ? 10'h0C0 : 10'hC):
-                        (abs_select_high[3:0] == 3'h5) ? (signed_bit ? 10'h080 : 10'h4):
-                            (abs_select_high[3:0] == 3'h6) ? (signed_bit ? 10'h180 : 10'h6):
-                                (abs_select_high[3:0] == 3'h7) ? (signed_bit ? 10'h100 : 10'h2):
-                                    (abs_select_high[3:0] == 3'h8) ? (signed_bit ? 10'h300 : 10'h3):
+		(abs_select_high[3:0] == 3'h2) ? (signed_bit ? 10'h060 : 10'h018):
+		(abs_select_high[3:0] == 3'h3) ? (signed_bit ? 10'h040 : 10'h8):
+		(abs_select_high[3:0] == 3'h4) ? (signed_bit ? 10'h0C0 : 10'hC):
+		(abs_select_high[3:0] == 3'h5) ? (signed_bit ? 10'h080 : 10'h4):
+		(abs_select_high[3:0] == 3'h6) ? (signed_bit ? 10'h180 : 10'h6):
+		(abs_select_high[3:0] == 3'h7) ? (signed_bit ? 10'h100 : 10'h2):
+		(abs_select_high[3:0] == 3'h8) ? (signed_bit ? 10'h300 : 10'h3):
                                         (signed_bit ? 10'h200 : 10'h1)) :
         (int2_count[20] ? 10'h0 : 10'h3ff); // Activity
 
@@ -69,4 +69,4 @@ module led_driver(iRSTN, iCLK, iDIG, iG_INT2, oLED);
                     int2_count <= int2_count+1;
             end
 
-endmodule // led_driver
+endmodule

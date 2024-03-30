@@ -31,7 +31,6 @@ module DE10_LITE_Small
         inout GSENSOR_SDO
     );
 
-
     //=======================================================
     //  REG/WIRE declarations
     //=======================================================
@@ -46,11 +45,7 @@ module DE10_LITE_Small
     //  Structural coding
     //=======================================================
     //
-    //assign DRAM_DQ 	   =  16'hzzzz;
-    //assign ARDUINO_IO 	=  16'hzzzz;
-    //assign GPIO		  		=	36'hzzzzzzzz;
 
-    //assign VGA_CLK = VGA_CTRL_CLK;
     assign resrt_n = KEY[0];
 
     always @(posedge MAX10_CLK2_50)
@@ -58,25 +53,21 @@ module DE10_LITE_Small
             Cont <= Cont+1;
         end
 
-
-    assign LEDR = resrt_n ? (SW[0] ? led_gensor : {Cont[25:24], Cont[25:24], Cont[25:24], Cont[25:24], Cont[25:24]}) : 10'h3ff
-        ;
+    assign LEDR = resrt_n ? (KEY[1] ? led_gensor : {Cont[25:24], Cont[25:24], Cont[25:24], Cont[25:24], Cont[25:24]}) : 10'h3ff;
     assign mSEG7_DIG = resrt_n ? {Cont[27:24], Cont[27:24], Cont[27:24], Cont[27:24], Cont[27:24], Cont[27:24]} : {6{4'b1000}};
 
-
-    Reset_Delay r0(.iCLK(MAX10_CLK1_50),
+    Reset_Delay r0(
+        .iCLK(MAX10_CLK1_50),
         .oRESET(DLY_RST));
 
-
-
-    SEG7_LUT_6 u0(.oSEG0(HEX0),
+    SEG7_LUT_6 u0(
+        .oSEG0(HEX0),
         .oSEG1(HEX1),
         .oSEG2(HEX2),
         .oSEG3(HEX3),
         .oSEG4(HEX4),
         .oSEG5(HEX5),
         .iDIG(mSEG7_DIG));
-
 
     //  Initial Setting and Data Read Back
     spi_ee_config u_spi_ee_config(
