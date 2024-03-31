@@ -14,4 +14,4 @@ module Reset_Delay(iCLK, oRESET);
                 oRESET <= 1'b1;
         end
 
-endmodule
+endmodule // Reset_Delay

@@ -10,4 +10,4 @@ module SEG7_LUT_6(oSEG0, oSEG1, oSEG2, oSEG3, oSEG4, oSEG5, iDIG);
     SEG7_LUT u5(oSEG5, iDIG[23:20]);
 
 
-endmodule
+endmodule // SEG7_LUT_6

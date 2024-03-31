@@ -45,9 +45,6 @@ module led_driver(iRSTN, iCLK, iDIG, iG_INT2, oLED);
                                         (signed_bit ? 10'h200 : 10'h1)) :
         (int2_count[20] ? 10'h0 : 10'h3ff); // Activity
 
-
-
-
     always @(posedge iCLK or negedge iRSTN)
         if (!iRSTN)
             begin
@@ -69,4 +66,4 @@ module led_driver(iRSTN, iCLK, iDIG, iG_INT2, oLED);
                     int2_count <= int2_count+1;
             end
 
-endmodule
+endmodule // led_driver

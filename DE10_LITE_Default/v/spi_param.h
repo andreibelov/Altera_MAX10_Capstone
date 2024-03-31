@@ -5,7 +5,7 @@ parameter	SO_DataL		=	7;
 
 // Write/Read Mode 
 parameter	WRITE_MODE		=	2'b00;
-parameter	READ_MODE		  =	2'b10;
+parameter	READ_MODE		=	2'b10;
 
 // Initial Reg Number 
 parameter	INI_NUMBER	  	=	4'd11;

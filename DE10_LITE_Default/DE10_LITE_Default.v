@@ -65,7 +65,7 @@ module DE10_LITE_Default
     //  REG/WIRE declarations
     //=======================================================
     wire DLY_RST;
-    wire VGA_CTRL_CLK;
+    wire VGA_SYNC;
 
     wire[9:0] mVGA_R;
     wire[9:0] mVGA_G;
@@ -87,7 +87,6 @@ module DE10_LITE_Default
     assign ARDUINO_IO = 16'hzzzz;
     assign GPIO = 36'hzzzzzzzz;
 
-    assign VGA_CLK = VGA_CTRL_CLK;
     assign resrt_n = KEY[0];
 
     always @(posedge MAX10_CLK2_50)
@@ -114,7 +113,7 @@ module DE10_LITE_Default
     VGA_Audio_PLL p1(
         .areset(~DLY_RST),
         .inclk0(MAX10_CLK2_50),
-        .c0(VGA_CTRL_CLK),
+        .c0(VGA_CLK),
         .c1(spi_clk), // 2MHz
         .c2(spi_clk_out)        // 2MHz phase shift
     );

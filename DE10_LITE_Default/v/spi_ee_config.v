@@ -1,33 +1,35 @@
-module spi_ee_config(
-    iRSTN,
-    iSPI_CLK,
-    iSPI_CLK_OUT,
-    iG_INT2,
-    oDATA_L,
-    oDATA_H,
-    SPI_SDIO,
-    oSPI_CSN,
-    oSPI_CLK);
+module spi_ee_config
+    (
+        iRSTN,
+        iSPI_CLK,
+        iSPI_CLK_OUT,
+        iG_INT2,
+        oDATA_L,
+        oDATA_H,
+        SPI_SDIO,
+        oSPI_CSN,
+        oSPI_CLK
+    );
 
     `include "spi_param.h"
 
-//=======================================================
-//  PORT declarations
-//=======================================================
-//	Host Side
+    //=======================================================
+    //  PORT declarations
+    //=======================================================
+    //	Host Side
     input iRSTN;
     input iSPI_CLK, iSPI_CLK_OUT;
     input iG_INT2;
     output reg[SO_DataL:0] oDATA_L;
     output reg[SO_DataL:0] oDATA_H;
-//	SPI Side
+    //	SPI Side
     inout SPI_SDIO;
     output oSPI_CSN;
     output oSPI_CLK;
 
-//=======================================================
-//  REG/WIRE declarations
-//=======================================================
+    //=======================================================
+    //  REG/WIRE declarations
+    //=======================================================
     reg[3:0] ini_index;
     reg[SI_DataL-2:0] write_data;
     reg[SI_DataL:0] p2s_data;
@@ -43,9 +45,9 @@ module spi_ee_config(
     reg high_byte_d, read_back_d;
     reg[IDLE_MSB:0] read_idle_count; // reducing the reading rate
 
-//=======================================================
-//  Sub-module
-//=======================================================
+    //=======================================================
+    //  Sub-module
+    //=======================================================
     spi_controller u_spi_controller(
         .iRSTN(iRSTN),
         .iSPI_CLK(iSPI_CLK),
@@ -58,10 +60,10 @@ module spi_ee_config(
         .oSPI_CSN(oSPI_CSN),
         .oSPI_CLK(oSPI_CLK));
 
-//=======================================================
-//  Structural coding
-//=======================================================
-// Initial Setting Table
+    //=======================================================
+    //  Structural coding
+    //=======================================================
+    // Initial Setting Table
     always @(ini_index)
         case (ini_index)
             0: write_data = {THRESH_ACT, 8'h20};
@@ -180,4 +182,4 @@ module spi_ee_config(
                 clear_status_d <= {clear_status_d[2:0], clear_status};
             end
 
-endmodule
+endmodule // spi_ee_config
