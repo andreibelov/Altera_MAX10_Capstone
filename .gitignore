@@ -15,6 +15,7 @@ build/
 **/simulation/modelsim/
 db/
 incremental_db/
+output_files/
 
 ### Modelsim template
 rtl_work/
