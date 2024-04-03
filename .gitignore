@@ -16,6 +16,7 @@ build/
 db/
 incremental_db/
 output_files/
+*.qws
 
 ### Modelsim template
 rtl_work/
