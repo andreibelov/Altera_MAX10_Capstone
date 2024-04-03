@@ -74,6 +74,6 @@ module DE10_LITE_Default
     //  Structural coding
     //=======================================================
     //
-    C4M1P2 u1(.SW(SW[3:0]), .HEX0(HEX0[6:0]), .HEX1(HEX1[6:0]));
+    C4M1P2 u1(.SW(SW[3:0]), .HEX0(HEX0), .HEX1(HEX1));
 
 endmodule // DE10_LITE_Golden_Top
