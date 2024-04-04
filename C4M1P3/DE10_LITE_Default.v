@@ -74,6 +74,5 @@ module DE10_LITE_Default
     //  Structural coding
     //=======================================================
     //
-    C4M1P3 u1(.Cin(SW[8]), .A(SW[7:4]), .B(SW[3:0]), .Cout(LEDR[4]), .S(LEDR[3:0]));
-
+    C4M1P3 u1(.SW(SW), .LEDR(LEDR));
 endmodule // DE10_LITE_Golden_Top

@@ -84,3 +84,34 @@ begin
 	S       <= Out2bit(0);
 	Cout    <= Out2bit(1);
 end architecture Behavioural2;
+
+-- Architecture of the Full_adder entity
+-- www.physicsteacher.in/2023/07/14/full-adder-using-two-4-is-to-1-multiplexer/
+-- #logic-circuit-for-the-full-adder-using-two-41-multiplexer
+architecture Mux of Full_adder is
+	-- Commonly declared signals
+	signal NOTA		: std_logic;
+	signal in2bit	: std_logic_vector(1 downto 0);
+  	constant O  	: std_logic := '0';
+  	constant I  	: std_logic := '1';
+begin
+
+	-- Selected Signal Assignment
+	-- Selected Signal Assignment
+	with in2bit select
+		S <= A	  when "00",
+			 NOTA when "01",
+			 NOTA when "10",
+			 A    when "11",
+			 O    when others;
+
+	with in2bit select
+		Cout <= O when "00",
+			 	A when "01",
+			 	A when "10",
+			    I when "11",
+			 	O when others;
+	-- Concurrent Signal Assignment
+	in2bit <= (B & Cin);
+	NOTA <= not A;
+end architecture Mux;
