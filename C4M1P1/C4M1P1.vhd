@@ -85,7 +85,7 @@ begin
 	-- a short-hand notion for creating a process along with the appropriate
 	-- sensitivity list and case statement.
 
-	-- Component Instantiation Statement
+	-- Component Instantiation Statements
 	u0 : SEG7_LUT
 		port map (
 			iDIG => iDIG0,

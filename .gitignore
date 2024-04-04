@@ -19,6 +19,7 @@ incremental_db/
 output_files/
 *.qws
 
+replace-git-emails.sh
 ### Modelsim template
 rtl_work/
 vsim.wlf

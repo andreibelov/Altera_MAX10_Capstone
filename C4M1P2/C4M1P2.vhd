@@ -135,6 +135,7 @@ begin
 				 A when '1',
 			"0000" when others;
 
+	-- Component Instantiation Statements
 	u0 : work.SEG7_LUT
 		port map (
 			iDIG => iDIG0,
