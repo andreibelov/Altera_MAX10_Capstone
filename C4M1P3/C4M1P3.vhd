@@ -78,6 +78,38 @@ begin
 
 end architecture Structural;
 
+-- Structural Architecture of the C4M1P3 entity
+architecture Structural2 of C4M1P3_internal is
+	component Full_Adder is  port (
+		A,B,Cin : in STD_LOGIC;
+		S,Cout	: out STD_LOGIC);
+	end component Full_Adder;
+	-- Commonly declared signals
+	signal Cout_int : std_logic_vector(2 downto 0);
+begin
+	-- Component Instantiation Statements
+	u0 : Full_adder port map (
+		Cin => Cin, A => A(0), B => B(0), Cout => Cout_int(0), S => S(0));
+
+	u1 : Full_adder port map (
+		Cin => Cout_int(0), A => A(1), B => B(1), Cout => Cout_int(1), S => S(1));
+
+	u2 : Full_adder port map (
+		Cin => Cout_int(1), A => A(2), B => B(2), Cout => Cout_int(2), S => S(2));
+
+	u3 : Full_adder port map (
+		Cin => Cout_int(2), A => A(3), B => B(3), Cout => Cout, S => S(3));
+end architecture Structural2;
+
+-- Configuration declaration
+configuration C4M1P3_internal_Config of C4M1P3_internal is
+    for Structural2  -- Specify which architecture to use
+        for all : Full_adder
+            use entity work.Full_adder(Mux);
+        end for;
+    end for;
+end configuration C4M1P3_internal_Config;
+
 -- Use standard IEEE library
 library ieee;
 library work;
