@@ -47,14 +47,14 @@ begin
 	bac <= B & A & Cin;
 	S <= Out2bit(0);
 	Cout <= Out2bit(1);
-end architecture Selected;
+end architecture Selected; -- of Full_adder
 
 architecture Behavioural of Full_Adder is
 
 begin
     S <= A xor B xor Cin;
     Cout <= (A and B) or (A and Cin) or (B and Cin);
-end Behavioural;
+end Behavioural; -- of Full_adder
 
 -- Architecture of the Full_adder entity
 architecture Behavioural1 of Full_adder is
@@ -72,7 +72,7 @@ begin
 	-- Concurrent Signal Assignment
 	XOR_AB <= A xor B;
 	S <= Cin xor XOR_AB;
-end architecture Behavioural1;
+end architecture Behavioural1; -- of Full_adder
 
 -- Architecture of the Full_adder entity
 architecture Behavioural2 of Full_adder is
@@ -83,7 +83,7 @@ begin
 	Out2bit <= ('0' & A) + ('0' & B) + Cin;
 	S       <= Out2bit(0);
 	Cout    <= Out2bit(1);
-end architecture Behavioural2;
+end architecture Behavioural2; -- of Full_adder
 
 -- Architecture of the Full_adder entity
 -- www.physicsteacher.in/2023/07/14/full-adder-using-two-4-is-to-1-multiplexer/
@@ -96,7 +96,6 @@ architecture Mux of Full_adder is
   	constant I  	: std_logic := '1';
 begin
 
-	-- Selected Signal Assignment
 	-- Selected Signal Assignment
 	with in2bit select
 		S <= A	  when "00",
@@ -111,7 +110,8 @@ begin
 			 	A when "10",
 			    I when "11",
 			 	O when others;
+
 	-- Concurrent Signal Assignment
 	in2bit <= (B & Cin);
 	NOTA <= not A;
-end architecture Mux;
+end architecture Mux; -- of Full_adder

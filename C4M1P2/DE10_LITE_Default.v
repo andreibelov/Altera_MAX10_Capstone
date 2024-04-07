@@ -68,7 +68,8 @@ module DE10_LITE_Default
     //=======================================================
     //  REG/WIRE declarations
     //=======================================================
-
+    // https://stackoverflow.com/questions/54026193/default-type-input-and-output-signals-systemverilog
+    // https://verificationacademy.com/forums/t/usage-of-var/30107/9
 
     //=======================================================
     //  Structural coding
