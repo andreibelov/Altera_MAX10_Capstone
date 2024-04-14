@@ -16,10 +16,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library work;
 -- Entity port declaration
 entity comp4 is port (
 	A, B			 :  in  std_logic_vector(3 downto 0) := (others => '0');
-	AEB				 :  out  std_logic_vector(3 downto 0);
+	AEB				 :  out  std_logic_vector(3 downto 0):= (others => 'X');
 	AEQB, AGTB, ALTB :  out  std_logic);
 end entity comp4;
 
@@ -78,14 +79,18 @@ architecture Structural2 of comp4 is
 		AEB	 :  OUT  std_logic_vector(7 downto 0);
 		AEQB, AGTB, ALTB :  OUT  STD_LOGIC);
 	end component comp8;
+	signal unused : std_logic_vector(3 downto 0);
 begin
 	-- Component Instantiation Statements
 	-- To instantiate an entity directly, the entity must be written in VHDL.
 	-- <instance_name>: entity <library>.<entity_name>(<architecture_name>)
 	u0: entity work.comp8
 		port map (
+			A(7 downto 4) => (others => '0'),
 			A(3 downto 0) => A,
 			B(3 downto 0) => B,
+			B(7 downto 4) => (others => '0'),
+			AEB(7 downto 4) => unused,
 			AEB(3 downto 0) => AEB,
 			AEQB => AEQB, AGTB => AGTB, ALTB => ALTB);
 

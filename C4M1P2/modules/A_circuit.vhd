@@ -16,6 +16,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library work;
 -- Entity port declaration
 entity A_circuit is port (
 	-- Input ports

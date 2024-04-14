@@ -16,6 +16,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library work;
+use work.C4M1P2_internal;
+
 -- Entity port declaration
 entity C4M1P2 is port (
 	-- Input ports
@@ -28,7 +31,7 @@ end entity C4M1P2;
 -- Architecture of the entity
 architecture Structural of C4M1P2 is
 begin
-	u0 : work.C4M1P2_internal(Structural)
+	u0 : entity work.C4M1P2_internal(Structural)
 		port map (
 			SW => SW,
 			HEX0 => HEX0,

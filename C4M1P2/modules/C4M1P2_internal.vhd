@@ -80,7 +80,11 @@ begin
 
 end architecture Behavioural;
 
--- Architecture of the entity
+
+library work;
+use work.all;
+
+-- Structural Architecture of the entity
 architecture Structural of C4M1P2_internal is
 
 	-- Creates an unconstrained array (MUST be constrained when defined!)
@@ -89,17 +93,15 @@ architecture Structural of C4M1P2_internal is
 
 	signal iDIG : t_vector_array(0 to 1) := (others => (others => '0'));
 	signal oHEX : t_hex_array(0 to 1) := (others => (others => '0'));
+	signal unused : std_logic_vector(3 downto 0);
 
 	-- Signals with no default value
 	signal z		: std_logic;
 	signal A		: std_logic_vector(3 downto 0);
 	signal V		: std_logic_vector(3 downto 0);
 
--- 	signal iDIG0	: std_logic_vector(3 downto 0);
--- 	signal iDIG1	: std_logic_vector(3 downto 0) := "0000";
--- 	signal comp		: std_logic_vector(3 downto 0) := (others => '0');
 	constant comp	: std_logic_vector(3 downto 0) := "1001";
-	constant O	: std_logic_vector(3 downto 0) := "1001";
+	constant O		: std_logic_vector(3 downto 0) := "1001";
 
 begin
 
@@ -124,17 +126,23 @@ begin
 	HEX1 <= oHEX(1);
 
 	-- Component Instantiation Statements
-	u0 : work.comp4(Behavioural)
-		port map (A => V, B => comp, AGTB => z);
-
-	u1 : work.A_circuit
+	u1 : entity work.A_circuit
 		port map (V => V, A => A);
+
+	-- Ports parts associated individually should in contiguous sequence.
+	u0: entity work.comp8
+		port map (
+			A(7 downto 4) => (others => '0'),
+			A(3 downto 0) => V,
+			B(7 downto 4) => (others => '0'),
+			B(3 downto 0) => comp,
+			AGTB => z);
 
 	-- Generate Statements
 	segment:
 		for I in 0 to 1 generate
 			-- Component Instantiation Statements
-			u : work.SEG7_LUT
+			u : entity work.SEG7_LUT
 				port map (iDIG => iDIG(I), oSEG => oHEX(I));
 		end generate;
 

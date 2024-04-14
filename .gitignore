@@ -17,7 +17,9 @@ submissions/
 db/
 incremental_db/
 output_files/
+*.zip
 *.qws
+*_nativelink_simulation.rpt
 
 replace-git-emails.sh
 ### Modelsim template
