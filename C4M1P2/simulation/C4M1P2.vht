@@ -81,6 +81,6 @@ begin
 		wait for 10 ns;
 		simend <= true;
 		wait for 2 ns;
-		assert false report "Tests Complete" severity failure;
+		assert false report "Test Complete" & time'image(now) severity failure;
 	end process always;
 end architecture C4M1P2_arch;

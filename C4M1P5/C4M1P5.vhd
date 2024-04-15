@@ -41,7 +41,8 @@ architecture Structural of C4M1P5 is
 	-- Creates an unconstrained array (MUST be constrained when defined!)
 	type t_int_array is array (integer range <>) of integer range 0 to 9;
 	type t_hex_array is array (integer range <>) of std_logic_vector(7 downto 0);
-
+	-- IEEE Std 1076-1993 4.3.3 Alias declarations
+	-- "An alias ... declares an alternate name for an existing named entity."
 	alias A_input 	: std_logic_vector(3 downto 0) is SW(7 downto 4);
 	alias B_input	: std_logic_vector(3 downto 0) is SW(3 downto 0);
 	alias C_input	: std_logic is SW(8);
