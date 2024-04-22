@@ -1,0 +1,103 @@
+# do pwm_led_top_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying ~/intelFPGA_lite/18.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source {~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source/pwm_led_top.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 01:04:20 on Apr 22,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source" ~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source/pwm_led_top.v 
+# -- Compiling module pwm_led_top
+# 
+# Top level modules:
+# 	pwm_led_top
+# End time: 01:04:20 on Apr 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source {~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source/debouncer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 01:04:20 on Apr 22,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source" ~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source/debouncer.v 
+# -- Compiling module debouncer
+# 
+# Top level modules:
+# 	debouncer
+# End time: 01:04:20 on Apr 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source {~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source/pwm_gen.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 01:04:20 on Apr 22,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source" ~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/source/pwm_gen.v 
+# -- Compiling module pwm_gen
+# 
+# Top level modules:
+# 	pwm_gen
+# End time: 01:04:20 on Apr 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM {~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/pwm_pll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 01:04:20 on Apr 22,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM" ~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/pwm_pll.v 
+# -- Compiling module pwm_pll
+# 
+# Top level modules:
+# 	pwm_pll
+# End time: 01:04:20 on Apr 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/db {~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/db/pwm_pll_altpll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 01:04:20 on Apr 22,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/db" ~/git/fpga/Altera_MAX10_Capstone/DE10litePWM/db/pwm_pll_altpll.v 
+# -- Compiling module pwm_pll_altpll
+# 
+# Top level modules:
+# 	pwm_pll_altpll
+# End time: 01:04:20 on Apr 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# 
+# stdin: <EOF>
+vsim -i -l msim_transcript work.pwm_led_top -t ns -L ~/intelFPGA_lite/18.1/modelsim_ase/altera/verilog/altera_mf
+
+force -freeze sim:/pwm_led_top/MAX10_CLK1_50 1 0, 0 {10 ns} -r 20
+force -freeze sim:/pwm_led_top/duty_cycle_clk 1 0, 0 {1500 ns} -r 3000
+add wave -position insertpoint  \
+	sim:/pwm_led_top/MAX10_CLK1_50 \
+	sim:/pwm_led_top/SW \
+	sim:/pwm_led_top/ARDUINO_IO \
+	sim:/pwm_led_top/LEDR \
+	sim:/pwm_led_top/duty_cycle \
+	sim:/pwm_led_top/duty_cycle_clk \
+	sim:/pwm_led_top/pwm \
+	sim:/pwm_led_top/pwm_clk \
+	sim:/pwm_led_top/not_pwm
+force -freeze sim:/pwm_led_top/MAX10_CLK1_50 1 0, 0 {10 ns} -r 20
+force -freeze sim:/pwm_led_top/duty_cycle_clk 1 0, 0 {1500 ns} -r 3000
+run
+# ** Error (suppressible): (vsim-8630) /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/altera_mf.v(15819): Infinity results from division operation.
+# ** Error (suppressible): (vsim-8630) /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/altera_mf.v(15819): Infinity results from division operation.
+# ** Error (suppressible): (vsim-8630) /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/altera_mf.v(15819): Infinity results from division operation.
+force -freeze sim:/pwm_led_top/SW 000 0
+run
+#  Note : MAX 10 PLL locked to incoming clock
+# Time: 300  Instance: pwm_led_top.b2v_inst.altpll_component.cycloneiii_pll.pll3
+force -freeze sim:/pwm_led_top/SW 001 0
+run
+force -freeze sim:/pwm_led_top/SW 010 0
+run
+force -freeze sim:/pwm_led_top/SW 011 0
+run
+force -freeze sim:/pwm_led_top/SW 100 0
+run
+force -freeze sim:/pwm_led_top/SW 101 0
+run
+force -freeze sim:/pwm_led_top/SW 110 0
+run
+force -freeze sim:/pwm_led_top/SW 111 0
+run
+quit -sim
