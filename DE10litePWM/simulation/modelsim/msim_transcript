@@ -86,17 +86,7 @@ force -freeze sim:/pwm_led_top/SW 000 0
 run
 #  Note : MAX 10 PLL locked to incoming clock
 # Time: 300  Instance: pwm_led_top.b2v_inst.altpll_component.cycloneiii_pll.pll3
-force -freeze sim:/pwm_led_top/SW 001 0
-run
-force -freeze sim:/pwm_led_top/SW 010 0
-run
-force -freeze sim:/pwm_led_top/SW 011 0
-run
-force -freeze sim:/pwm_led_top/SW 100 0
-run
 force -freeze sim:/pwm_led_top/SW 101 0
-run
-force -freeze sim:/pwm_led_top/SW 110 0
 run
 force -freeze sim:/pwm_led_top/SW 111 0
 run
