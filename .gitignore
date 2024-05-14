@@ -13,7 +13,7 @@
 .build/
 build/
 submissions/
-**/simulation/modelsim/
+**/Embed/
 db/
 incremental_db/
 output_files/
@@ -23,6 +23,8 @@ output_files/
 
 replace-git-emails.sh
 ### Modelsim template
+**/simulation/modelsim/
+**/simulation/modelsim/rtl_work/
 rtl_work/
 vsim.wlf
 *.mpf

@@ -17,12 +17,12 @@ create_clock -period "5.0  MHz" -name clk_spi_ext [get_ports {GSENSOR_SCLK}]
 # Create Generated Clock
 #**************************************************************
 
+
 # SDRAM CLK
 create_generated_clock -source [get_pins {u3|altpll_0|sd1|pll7|clk[1]}] -name clk_dram_ext [get_ports {DRAM_CLK}]
 
 # workaround for on-chip flash
 create_generated_clock -name flash_se_neg_reg -divide_by 2 -source [get_pins -compatibility_mode { *altera_onchip_flash:*onchip_flash_0|altera_onchip_flash_avmm_data_controller:avmm_data_controller|flash_se_neg_reg|clk }] [get_pins -compatibility_mode { *altera_onchip_flash:*onchip_flash_0|altera_onchip_flash_avmm_data_controller:avmm_data_controller|flash_se_neg_reg|q }]
-
 # vga clock
 create_generated_clock -name clk_vga -divide_by 2 -multiply_by 1 -duty_cycle 50.00 -source [get_pins {p1|altpll_component|auto_generated|pll1|inclk[0]}] [get_pins {p1|altpll_component|auto_generated|pll1|clk[0]}]
 
@@ -37,16 +37,6 @@ derive_pll_clocks
 #**************************************************************
 # Set Clock Uncertainty
 #**************************************************************
-set_clock_uncertainty -rise_from [get_clocks {MAX10_CLK1_50}] -rise_to [get_clocks {MAX10_CLK1_50}]  0.020
-set_clock_uncertainty -rise_from [get_clocks {MAX10_CLK1_50}] -fall_to [get_clocks {MAX10_CLK1_50}]  0.020
-set_clock_uncertainty -fall_from [get_clocks {MAX10_CLK1_50}] -rise_to [get_clocks {MAX10_CLK1_50}]  0.020
-set_clock_uncertainty -fall_from [get_clocks {MAX10_CLK1_50}] -fall_to [get_clocks {MAX10_CLK1_50}]  0.020
-
-set_clock_uncertainty -rise_from [get_clocks {MAX10_CLK2_50}] -rise_to [get_clocks {MAX10_CLK2_50}]  0.020
-set_clock_uncertainty -rise_from [get_clocks {MAX10_CLK2_50}] -fall_to [get_clocks {MAX10_CLK2_50}]  0.020
-set_clock_uncertainty -fall_from [get_clocks {MAX10_CLK2_50}] -rise_to [get_clocks {MAX10_CLK2_50}]  0.020
-set_clock_uncertainty -fall_from [get_clocks {MAX10_CLK2_50}] -fall_to [get_clocks {MAX10_CLK2_50}]  0.020
-
 derive_clock_uncertainty
 
 

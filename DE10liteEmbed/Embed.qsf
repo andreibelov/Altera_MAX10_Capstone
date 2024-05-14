@@ -19,7 +19,7 @@
 #
 # Quartus Prime
 # Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-# Date created = 03:53:19  April 24, 2024
+# Date created = 02:16:38  April 29, 2024
 #
 # -------------------------------------------------------------------------- #
 #
@@ -36,14 +36,17 @@
 #
 # -------------------------------------------------------------------------- #
 
-set_global_assignment -name FAMILY "MAX 10 FPGA"
-set_global_assignment -name DEVICE 10M50DAF484C7G
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 15.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:35:21 JUNE 13,2016"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
-set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 7
+# set_global_assignment -name FAMILY "MAX 10 FPGA"
+# set_global_assignment -name DEVICE 10M50DAF484C7G
+# set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 7
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C6GES
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 
 #============================================================
@@ -98,6 +101,47 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_LDQM
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_RAS_N
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_UDQM
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_WE_N
+
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_ADDR[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_BA[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_BA[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_CAS_N
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_CKE
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_CLK
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_CS_N
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_DQ[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_LDQM
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_RAS_N
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_UDQM
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to DRAM_WE_N
+
 set_location_assignment PIN_U17 -to DRAM_ADDR[0]
 set_location_assignment PIN_W19 -to DRAM_ADDR[1]
 set_location_assignment PIN_V18 -to DRAM_ADDR[2]
@@ -462,41 +506,117 @@ set_location_assignment PIN_AA2 -to GPIO[35]
 # End of pin assignments by Terasic System Builder
 #============================================================
 
-# EDA_SIMULATION Assignments
-# ========================
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS NOT_USED -section_id eda_simulation
-set_global_assignment -name EDA_MAINTAIN_DESIGN_HIERARCHY OFF -section_id eda_simulation
-
-set_global_assignment -name EDA_TIME_SCALE "1 ns" -section_id eda_simulation
 # Project-Wide Assignments
 # ========================
 set_global_assignment -name BOARD "MAX 10 DE10 - Lite"
+set_global_assignment -name TOP_LEVEL_ENTITY DE10_LITE_Default
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name SAVE_DISK_SPACE OFF
+set_global_assignment -name SMART_RECOMPILE OFF
+
+# Classic Timing Assignments
+# ==========================
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name DISABLE_LEGACY_TIMING_ANALYZER OFF
+set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
+set_global_assignment -name TIMING_ANALYZER_DO_REPORT_TIMING ON
+set_global_assignment -name TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS ON
+# set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+# set_global_assignment -name TIMEQUEST_DO_REPORT_TIMING ON
+# set_global_assignment -name TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS ON
 
-set_global_assignment -name TOP_LEVEL_ENTITY DE10_LITE_Default
 
-# Incremental Compilation Assignments
-# ===================================
+# Compilation process (FLOW) Assignments
+# ====================
+# set_global_assignment -name FLOW_ENABLE_RTL_VIEWER OFF
+# set_global_assignment -name FLOW_DISABLE_ASSEMBLER OFF
+# set_global_assignment -name FLOW_ENABLE_IO_ASSIGNMENT_ANALYSIS OFF
+# set_global_assignment -name READ_OR_WRITE_IN_BYTE_ADDRESS ON
+
+# Compiler Assignments
+# ====================
+# set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
+# set_global_assignment -name OPTIMIZATION_MODE "HIGH PERFORMANCE EFFORT"
+
+# Analysis & Synthesis Assignments
+# ================================
+#	OCP_HW_EVAL Enables Intel FPGA IP Evaluation Mode feature.
+set_global_assignment -name OCP_HW_EVAL ENABLE
+# set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION ON
+set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION OFF
+set_global_assignment -name ALLOW_ANY_ROM_SIZE_FOR_RECOGNITION OFF
+
+# Fitter Assignments
+# ==================
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+# set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+# set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED"
+# set_global_assignment -name ROUTER_CLOCKING_TOPOLOGY_ANALYSIS ON
+# set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+# set_global_assignment -name ADVANCED_PHYSICAL_OPTIMIZATION OFF
+# set_global_assignment -name PHYSICAL_SYNTHESIS_EFFORT EXTRA
+# set_global_assignment -name ALM_REGISTER_PACKING_EFFORT LOW
+# set_global_assignment -name ECO_OPTIMIZE_TIMING ON
+# set_global_assignment -name ECO_REGENERATE_REPORT ON
+# set_global_assignment -name FINAL_PLACEMENT_OPTIMIZATION ALWAYS
+# set_global_assignment -name ROUTING_BACK_ANNOTATION_MODE NORMAL
+# set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC ON
+# set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_DUPLICATION ON
+# set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_RETIMING ON
+# set_global_assignment -name PHYSICAL_SYNTHESIS_ASYNCHRONOUS_SIGNAL_PIPELINING ON
+
+# EDA Netlist Writer Assignments
+# ==============================
+#Error:
+#Can’t generate netlist output files because the file <file name> is an
+# OpenCore Plus time-limited file
+#To avoid this error, disable the EDA simulation tool in your project
+# by opening the Settings dialog box from the Quartus II Assignments menu.
+# Select the category EDA Tool Settings and the subcategory Simulation.
+# On the Simulation page of the Settings dialog box,
+# change the Tool name option to <None>.
+set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
+set_global_assignment -name EDA_BOARD_DESIGN_TIMING_TOOL "<None>"
+set_global_assignment -name EDA_BOARD_DESIGN_SYMBOL_TOOL "<None>"
+set_global_assignment -name EDA_BOARD_DESIGN_SIGNAL_INTEGRITY_TOOL "<None>"
+set_global_assignment -name EDA_TIME_SCALE "1 ns" -section_id eda_simulation
+
+# Assembler Assignments
+# =====================
+# controls whether the INIT_DONE signal will be gated by OCT_DONE signal
 set_global_assignment -name ENABLE_OCT_DONE OFF
 set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
 set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
-set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
-set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
-set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED"
+set_global_assignment -name MAX10FPGA_CONFIGURATION_SCHEME "INTERNAL CONFIGURATION"
+
+# SignalTap II Assignments
+# ========================
+# set_global_assignment -name ENABLE_LOGIC_ANALYZER_INTERFACE OFF
+
+# Power Estimation Assignments
+# ============================
+set_global_assignment -name POWER_USE_DEVICE_CHARACTERISTICS TYPICAL
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+
+# Advanced I/O Timing Assignments
+# ===============================
+# set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+
+# Incremental Compilation Assignments
+# ===================================
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+
 set_global_assignment -name SOURCE_FILE v/spi_param.h
 set_global_assignment -name VERILOG_FILE v/spi_ee_config.v
 set_global_assignment -name VERILOG_FILE v/spi_controller.v
@@ -509,7 +629,9 @@ set_global_assignment -name VERILOG_FILE VGA_DATA/VGA_Controller.v
 set_global_assignment -name QIP_FILE VGA_DATA/Img_RAM.qip
 set_global_assignment -name VERILOG_FILE v/Reset_Delay.v
 set_global_assignment -name VERILOG_FILE DE10_LITE_Default.v
-set_global_assignment -name SDC_FILE DE10_LITE_Default.SDC
-set_global_assignment -name QIP_FILE VGA_Audio_PLL.qip
-
+#https://community.intel.com/t5/Intel-Quartus-Prime-Software/QSYS-vs-QIP/m-p/635381
+set_global_assignment -name QIP_FILE Embed/synthesis/Embed.qip
+set_global_assignment -name CDF_FILE Embed_time_limited.cdf
+set_global_assignment -name SDC_FILE DE10_LITE_Default.sdc
+set_global_assignment -name QIP_FILE ip/VGA_Audio_PLL.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
